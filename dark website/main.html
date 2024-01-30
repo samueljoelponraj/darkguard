@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your E-Commerce Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+        .buttons{
+            background-color: yellow;
+            color:balck;
+            font-size:10px;
+        }
+
+
+        main {
+            padding: 20px;
+        }
+        .hi{
+            height:150px;
+
+        }
+        .launch-time{
+            display: flex;
+        }
+        .launch-time div{
+            flex-basis: 100px;
+        }
+        .launch-time div p{
+            font-size: 60px;
+            margin-bottom: -14px;
+        }
+
+        .product {
+            display:inline-block;
+            border: 5px solid #ddd;
+            padding: 35px;
+            margin: 10px;
+            text-align: center;
+        }
+        .sold{
+            font-size:20px;
+            color:red;
+            
+            
+
+        }
+        .soldS{
+            font-size:20px;
+            color:green;
+        }
+
+        /* Add more styles for navigation, product display, etc. */
+    </style>
+</head>
+<body>
+    <header>
+        <h1> The Basket </h1>
+        <div class="launch-time">
+            <div>
+                <p id="days">00</p>
+                <span>Days</span>
+            </div>
+            <div>
+                <p id="hours">00</p>
+                <span>Hours</span>
+            </div>
+            <div>
+                <p id="minutes">00</p>
+                <span>Minutes</span>
+            </div>
+            <div>
+                <p id="seconds">00</p>
+                <span>Seconds</span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="product" id="product1">
+            <img class = hi src="suncreem.jpg">
+            <p>Dr sheths sunscreen. price: $80</p>
+            <p class="sold">SOLD OUT</p>
+            <button class="buttons" onclick="addToCart('Product 1', 50)">Add to Cart</button>
+           
+        </div>
+
+        <div class="product" id="product2">
+            <img class="hi" src="lip.jpg">
+            <p>Dot&key lipblam . price:$60 </p>
+            <p class="soldS">SOLD OUT</p>
+            <button class="buttons" onclick="addToCart('Product 2', 75)">Add to Cart</button>
+        </div>
+        <div class="product" id="product2">
+            <img class = "hi"src="eye.jpg">
+            <p>Lakme maskara . Price: $55</p>
+            <p class="soldS">ON SALE</p>
+            <button class="buttons" onclick="addToCart('Product 2', 75)">Add to Cart</button>
+        </div>
+        <div class="product" id="product2">
+            <img class= "hi" src="serum.jpg">
+            <p>Niacinamide. Price: $65</p>
+            <p class="soldS">ON SALE</p>
+            <button class="buttons" onclick="addToCart('Product 2', 75)">Add to Cart</button>
+        </div>
+        <div class="product" id="product2">
+            <img class="hi" src="nailpolish.jpg">
+            <p>Nailpolish.Price: $15</p>
+            <p class="soldS">ON SALE</p>
+            <button class="buttons" onclick="addToCart('Product 2', 75)">Add to Cart</button>
+        </div>
+        <div class="product" id="product2">
+            <img class= "hi "src="shadow.jpg">
+            <p>Nykaa eyeshadow. Price: $155</p>
+            <p class="soldS">ON SALE</p>
+            <button class="buttons" onclick="addToCart('Product 2', 75)">Add to Cart</button>
+        </div>
+        <div class="product" id="product2">
+            <img class= "hi" src="glass.jpg">
+            <p>Butterfly Glass. Price: $75</p>
+            <p class="soldS">ON SALE</p>
+            <button class="buttons" onclick="addToCart('Product 2', 75)">Add to Cart</button>
+        </div>
+        <div class="product" id="product2">
+            <img class="hi" src="bag.jpg">
+            <p>Makeup bag. Price: $35</p>
+            <p class="soldS">ON SALE</p>
+            <button class="buttons" onclick="addToCart('Product 2', 75)">Add to Cart</button>
+        </div>
+       
+        <!-- Add more products as needed -->
+
+        <div id="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="total">0</span></p>
+        </div>
+    </main>
+
+    <script>
+        // Add your JavaScript code here
+        let cartItems = [];
+        let total = 0;
+
+        function addToCart(productName, price) {
+            cartItems.push({ productName, price });
+            total += price;
+
+            // Update the cart display
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItemsElement = document.getElementById('cart-items');
+            const totalElement = document.getElementById('total');
+
+            // Clear previous items
+            cartItemsElement.innerHTML = '';
+
+            // Populate the cart items
+            cartItems.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.productName} - $${item.price}`;
+                cartItemsElement.appendChild(listItem);
+            });
+
+            // Update the total
+            totalElement.textContent = total;
+        }
+
+        var countDownDate = new Date("jan 29, 2024 00:00:00").getTime();
+        var x = setInterval(function(){
+            var now = new Date().getTime();
+            var distance =countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) /(1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) /(1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+        },1000);
+
+    </script>
+</body>
+</html>
